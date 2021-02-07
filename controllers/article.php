@@ -5,14 +5,14 @@ include $_SERVER["DOCUMENT_ROOT"] . "/db.php";
 try {
   $db = newDB();
 
-  $article=$_POST["article"];
+  $article=htmlspecialchars($_POST["article"], ENT_QUOTES);
   if(empty($article)) {
     redirect_to('/');
     $_SESSION['flash'] = "何か記事を書いてください";
     exit();
   }
 
-  $name=$_POST["name"];
+  $name=htmlspecialchars($_POST["name"], ENT_QUOTES);
   if(empty($name)) {
     $name = "名無しさん";
   } else {
