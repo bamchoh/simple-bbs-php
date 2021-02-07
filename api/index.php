@@ -3,6 +3,7 @@ preg_match('|' . dirname($_SERVER['SCRIPT_NAME']) . '/([\w%/]*)|', $_SERVER['REQ
 $paths = explode('/', $matches[1]);
 $id = isset($paths[1]) ? htmlspecialchars($paths[1]) : null;
 switch (strtolower($_SERVER['REQUEST_METHOD']) . ':' . $paths[0]) {
+  /*
 case 'get:user':
   if ($id) echo "ユーザー #{$id} 取得";
   else echo 'ユーザー 一覧';
@@ -16,6 +17,7 @@ case 'put:user':
 case 'delete:user':
   echo "ユーザー #{$id} 削除";
   break;
+  */
 case 'post:article':
   include $_SERVER["DOCUMENT_ROOT"] . '/controllers/article.php';
   break;

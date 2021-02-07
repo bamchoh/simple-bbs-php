@@ -21,8 +21,12 @@ try {
   $smarty = new Smarty();
   $smarty->setTemplateDir('templates')->setCacheDir('templates-cache')->setCompileDir('templates_c')->setCacheDir('tempaltes-cache')->setConfigDir('configs');
   $smarty->assign("messages", $messages);
+  $smarty->assign("name", $_SESSION['name']);
+  $smarty->assign("flash", $_SESSION['flash']);
+  $smarty->assign("count", $_SESSION['count']);
   $smarty->display('index.tpl');
 
+  unset($_SESSION['flash']);
   unset($db);
 } catch (PDOException $e) {
   echo $e->getMessage();

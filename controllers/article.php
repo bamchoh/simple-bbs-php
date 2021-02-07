@@ -5,8 +5,19 @@ include $_SERVER["DOCUMENT_ROOT"] . "/db.php";
 try {
   $db = newDB();
 
-  $name=$_POST["name"];
   $article=$_POST["article"];
+  if(empty($article)) {
+    redirect_to('/');
+    $_SESSION['flash'] = "何か記事を書いてください";
+    exit();
+  }
+
+  $name=$_POST["name"];
+  if(empty($name)) {
+    $name = "名無しさん";
+  } else {
+    $_SESSION['name'] = $name;
+  }
 
   $sql = "insert into articles (name, article, create_at) values (?, ?, current_timestamp)";
   $stmt = $db->prepare($sql);
@@ -17,6 +28,4 @@ try {
   echo $e->getMessage();
 }
 
-$baseurl = (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'];
-$url = $baseurl . '/';
-header('Location: ' . $url);
+redirect_to('/');
