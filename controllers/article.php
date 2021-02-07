@@ -1,4 +1,5 @@
 <?php
+include $_SERVER["DOCUMENT_ROOT"] . "/init.php";
 include $_SERVER["DOCUMENT_ROOT"] . "/db.php";
 
 try {
