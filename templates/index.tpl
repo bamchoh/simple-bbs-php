@@ -20,7 +20,7 @@
       segoe ui symbol;  
     }
 
-    button, input, select, textarea {
+    button, input, select, textarea, pre {
       font-family : inherit;
       font-size : 100%;
     }
@@ -78,8 +78,7 @@
 
 {foreach from=$messages item="message"}
   名前: {$message.name} - {$message.create_at} <br />
-  内容: {$message.article} <br />
-  <br />
+  <pre>{$message.article}</pre>
 {/foreach}
 
 </body>
