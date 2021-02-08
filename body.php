@@ -3,6 +3,12 @@ include $_SERVER["DOCUMENT_ROOT"] . "/init.php";
 include $_SERVER["DOCUMENT_ROOT"] . "/db.php";
 
 try {
+  if(!isset($_SESSION["count"])) {
+    $_SESSION["count"] = 1;
+  } else {
+    $_SESSION["count"]++;
+  }
+
   $db = newDB();
 
   $sql = "select * from articles order by create_at desc";
