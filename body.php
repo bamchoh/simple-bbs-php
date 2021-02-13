@@ -32,6 +32,8 @@ try {
   $smarty->assign("name", $_SESSION['name']);
   if(isset($_SESSION['flash'])) {
     $smarty->assign("flash", $_SESSION['flash']);
+  } else {
+    $smarty->assign("flash", "");
   }
   $smarty->assign("count", $_SESSION['count']);
   $smarty->assign("bbs_dir", $bbs_dir);
