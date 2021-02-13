@@ -32,6 +32,7 @@ try {
   $smarty->assign("name", $_SESSION['name']);
   $smarty->assign("flash", $_SESSION['flash']);
   $smarty->assign("count", $_SESSION['count']);
+  $smarty->assign("bbs_dir", $bbs_dir);
   $smarty->display('index.tpl');
 
   unset($_SESSION['flash']);
