@@ -74,7 +74,7 @@
 {/if}
 </div>
 
-<form method="POST" action="/api/article">
+<form method="POST" action="{$bbs_dir}/api/article">
   <table>
     <tr>
       <th>名前</th>

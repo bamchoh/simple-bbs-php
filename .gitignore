@@ -476,3 +476,4 @@ composer.lock
 *.scss.map
 
 .env
+bbs_root_dir.php

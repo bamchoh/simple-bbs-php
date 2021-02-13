@@ -1,4 +1,8 @@
 <?php
+require_once $_SERVER["DOCUMENT_ROOT"] . "/bbs_root_dir.php";
+
+include_once $bbs_root_dir . "/init.php";
+
 preg_match('|' . dirname($_SERVER['SCRIPT_NAME']) . '/([\w%/]*)|', $_SERVER['REQUEST_URI'], $matches);
 $paths = explode('/', $matches[1]);
 $id = isset($paths[1]) ? htmlspecialchars($paths[1]) : null;
@@ -19,6 +23,6 @@ case 'delete:user':
   break;
   */
 case 'post:article':
-  include $_SERVER["DOCUMENT_ROOT"] . '/controllers/article.php';
+  include_once $bbs_root_dir . '/controllers/article.php';
   break;
 }

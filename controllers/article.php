@@ -1,6 +1,7 @@
 <?php
-include $_SERVER["DOCUMENT_ROOT"] . "/init.php";
-include $_SERVER["DOCUMENT_ROOT"] . "/db.php";
+require $_SERVER["DOCUMENT_ROOT"] . "/bbs_root_dir.php";
+include $bbs_root_dir . "/init.php";
+include $bbs_root_dir . "/db.php";
 
 try {
   $db = newDB();
