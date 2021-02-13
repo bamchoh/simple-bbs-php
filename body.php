@@ -30,7 +30,9 @@ try {
   $smarty->setTemplateDir('templates')->setCacheDir('templates-cache')->setCompileDir('templates_c')->setCacheDir('tempaltes-cache')->setConfigDir('configs');
   $smarty->assign("messages", $messages);
   $smarty->assign("name", $_SESSION['name']);
-  $smarty->assign("flash", $_SESSION['flash']);
+  if(isset($_SESSION['flash'])) {
+    $smarty->assign("flash", $_SESSION['flash']);
+  }
   $smarty->assign("count", $_SESSION['count']);
   $smarty->assign("bbs_dir", $bbs_dir);
   $smarty->display('index.tpl');
