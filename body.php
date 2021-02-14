@@ -27,7 +27,12 @@ try {
   }
 
   $smarty = new Smarty();
-  $smarty->setTemplateDir('templates')->setCacheDir('templates-cache')->setCompileDir('templates_c')->setCacheDir('tempaltes-cache')->setConfigDir('configs');
+  $smarty
+    ->setTemplateDir($bbs_root_dir . '/templates')
+    ->setCacheDir($bbs_root_dir . '/templates-cache')
+    ->setCompileDir($bbs_root_dir . '/templates_c')
+    ->setCacheDir($bbs_root_dir . '/tempaltes-cache')
+    ->setConfigDir($bbs_root_dir . '/configs');
   $smarty->assign("messages", $messages);
   $smarty->assign("name", $_SESSION['name']);
   if(isset($_SESSION['flash'])) {
@@ -37,6 +42,10 @@ try {
   }
   $smarty->assign("count", $_SESSION['count']);
   $smarty->assign("bbs_dir", $bbs_dir);
+
+  $_SESSION['csrf_token'] = generate_secure_string();
+  $smarty->assign("csrf_token", $_SESSION['csrf_token']);
+
   $smarty->display('index.tpl');
 
   unset($_SESSION['flash']);

@@ -1,10 +1,15 @@
 <?php
-require $_SERVER["DOCUMENT_ROOT"] . "/bbs_root_dir.php";
-include $bbs_root_dir . "/init.php";
-include $bbs_root_dir . "/db.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/bbs_root_dir.php";
+include_once $bbs_root_dir . "/init.php";
+include_once $bbs_root_dir . "/db.php";
 
 try {
   $db = newDB();
+
+  if (!isset($_POST["csrf_token"]) || !($_POST["csrf_token"] === $_SESSION['csrf_token'])) {
+   $_SESSION['flash'] = "不正なリクエストです";
+   exit();
+  }
 
   $article=htmlspecialchars($_POST["article"], ENT_QUOTES);
   if(empty($article)) {

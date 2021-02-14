@@ -5,3 +5,7 @@ function redirect_to($uri) {
     $url = $baseurl . $bbs_dir . $uri;
     header('Location: ' . $url);
 }
+
+function generate_secure_string() {
+    return bin2hex(openssl_random_pseudo_bytes(16));
+}
