@@ -32,7 +32,7 @@ try {
     ->setCacheDir($bbs_root_dir . '/templates-cache')
     ->setCompileDir($bbs_root_dir . '/templates_c')
     ->setCacheDir($bbs_root_dir . '/tempaltes-cache')
-    ->setConfigDir($bbs_root_dir . '/configs');
+    ->setConfigDir($bbs_root_dir . '/smarty_configs');
   $smarty->assign("messages", $messages);
   $smarty->assign("name", $_SESSION['name']);
   if(isset($_SESSION['flash'])) {

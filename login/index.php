@@ -10,7 +10,7 @@ $smarty
 ->setCacheDir($bbs_root_dir . '/templates-cache')
 ->setCompileDir($bbs_root_dir . '/templates_c')
 ->setCacheDir($bbs_root_dir . '/tempaltes-cache')
-->setConfigDir($bbs_root_dir . '/configs');
+->setConfigDir($bbs_root_dir . '/smarty_configs');
 
 $_SESSION['csrf_token'] = generate_secure_string();
 $smarty->assign("csrf_token", $_SESSION['csrf_token']);
