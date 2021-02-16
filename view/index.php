@@ -35,7 +35,9 @@
 <div id="app">
   <div class="container">
 
-<div class="alert alert-primary" role="alert">
+  <h1>bamchohの掲示板</h1>
+
+  <div class="alert alert-primary" role="alert">
 こんにちわ <b> {{ name ?? 'ゲスト' }} </b> さん!!
 
 <div v-if="count === 1">
@@ -70,7 +72,6 @@
 
 <div class="mb-4"></div>
 
-    <h1>bamchohの掲示板</h1>
     <div v-for="message in messages">
       名前: {{ message.name }} - {{ message.create_at }} <br />
       <div class="aahub_light"><pre>{{ message.article }}</pre></div>
