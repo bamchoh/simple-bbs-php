@@ -9,3 +9,7 @@ function redirect_to($uri) {
 function generate_secure_string() {
     return bin2hex(openssl_random_pseudo_bytes(16));
 }
+
+function dh($str) {
+    return htmlspecialchars_decode($str, ENT_QUOTES);
+}
