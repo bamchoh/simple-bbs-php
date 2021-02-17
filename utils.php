@@ -10,6 +10,11 @@ function generate_secure_string() {
     return bin2hex(openssl_random_pseudo_bytes(16));
 }
 
+function generate_csrf_token() {
+    $_SESSION["csrf_token"] = generate_secure_string();
+    return $_SESSION["csrf_token"];
+}
+
 function h($str) {
     return htmlspecialchars($str, ENT_QUOTES, "UTF-8");
 }

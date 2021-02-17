@@ -14,25 +14,7 @@
 <div id="app">
   <link rel="stylesheet" :href="to_path('/assets/css/aahub_light.css')">
 
-  <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
-    <a class="navbar-brand" :href="to_path('/')">BBS</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-      </ul>
-
-      <a class="btn btn-success my-2 my-sm-0 mr-1" :href="to_path('/login')" role="button">
-        Log In
-      </a>
-
-      <a class="btn btn-outline-success my-2 my-sm-0" :href="to_path('/signup')" role="button">
-        Sign Up
-      </a>
-    </div>
-  </nav>
+  <bbs_header></bbs_header>
 
   <div class="container">
 
@@ -54,18 +36,17 @@
     </div>
   </div>
 
-  <form method="POST" :action="to_path('/api/article')">
-    <input type="hidden" name="csrf_token" v-bind:value="csrf_token">
+  <form method="POST" :action="this.$root.to_path('/api/article')">
+    <input type="hidden" name="csrf_token" :value="csrf_token">
     <div class="form-group">
       <label for="InputName">名前</label>
-      <input class="form-control" name="name" type="text" v-bind:value="name">
+      <input class="form-control" name="name" type="text" :value="name">
     </div>
     <div class="form-group">
       <label for="InputArticle">記事</label>
-      <textarea class="form-control" class="aahub_light" name="article" cols="80%" rows="8"></textarea>
+      <textarea class="form-control aahub_light" name="article" cols="80%" rows="8"></textarea>
     </div>
-    <button class="btn btn-primary" type="submit">
-      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+    <button class="btn btn-primary">
       送信
     </button>
   </form>
@@ -86,7 +67,31 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
-Vue.component('article-post', {
+  Vue.component('bbs_header', {
+    template: `
+      <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+      <a class="navbar-brand" :href="this.$root.to_path('/')">BBS</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+
+        <a class="btn btn-success my-2 my-sm-0 mr-1" :href="this.$root.to_path('/login')" role="button">
+          Log In
+        </a>
+
+        <a class="btn btn-outline-success my-2 my-sm-0" :href="this.$root.to_path('/signup')" role="button">
+          Sign Up
+        </a>
+      </div>
+    </nav>
+    `
+  })
+
+  Vue.component('article-post', {
     props: ['message'],
     template: `
       <div class="article-post">
@@ -94,7 +99,7 @@ Vue.component('article-post', {
         <div class="aahub_light"><pre>{{ message.article }}</pre></div>
       </div>
     `
-})
+  })
 
 var v = new Vue({
   el: "#app",

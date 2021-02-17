@@ -33,7 +33,7 @@ try {
     $data["flash"] = $_SESSION['flash'];
     $data["count"] = $_SESSION['count'];
     $data["bbs_dir"] = $bbs_dir;
-    $data["csrf_token"] = $_SESSION['csrf_token'];
+    $data["csrf_token"] = generate_csrf_token();
 
     $data_json = h(json_encode($data));
 
