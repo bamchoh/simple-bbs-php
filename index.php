@@ -35,6 +35,8 @@ try {
     $data["bbs_dir"] = $bbs_dir;
     $data["csrf_token"] = $_SESSION['csrf_token'];
 
+    $data_json = h(json_encode($data));
+
     unset($_SESSION['flash']);
     unset($db);
 

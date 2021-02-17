@@ -10,6 +10,10 @@ function generate_secure_string() {
     return bin2hex(openssl_random_pseudo_bytes(16));
 }
 
+function h($str) {
+    return htmlspecialchars($str, ENT_QUOTES, "UTF-8");
+}
+
 function dh($str) {
     return htmlspecialchars_decode($str, ENT_QUOTES);
 }
